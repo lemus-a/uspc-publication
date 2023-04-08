@@ -19,7 +19,7 @@ Reworked
  
  
 ##### **Table 9. The Number of visitors to the Seoul Botanical Gardens since its official Opening**
-*Source: Seoul Information Communication Plaza *
+*Source: Seoul Information Communication Plaza*
 
 Initial
 
