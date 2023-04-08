@@ -22,7 +22,7 @@ Reworked
 *Source: Seoul Information Communication Plaza *
 
 Initial
-![png](figures/table9or.png)
+![png](figures/table9or.PNG)
 
 Reworked
 ![jpg](figures/table9.jpg) 
