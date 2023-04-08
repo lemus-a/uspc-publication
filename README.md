@@ -22,6 +22,7 @@ Reworked
 *Source: Seoul Information Communication Plaza *
 
 Initial
+
 ![png](figures/table9or.PNG)
 
 Reworked
@@ -29,6 +30,8 @@ Reworked
 
 
 All initial/reworked figure pairings are in the *_figures_all.docx* file within in figures/
+
+
 
 
 **Publication Link**
