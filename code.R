@@ -1,16 +1,12 @@
-install.packages("ggrepel")
-install.packages("Rcpp")
-update.packages("ggrepel")
 #no overlapping text in ggplot2
 library(ggrepel)
 library(tidyverse)
 library(scales)
-
+library(Rcpp)
 
 #color palette
 
 nature <- c("#445E72", "#5A90BF", "#A09A8C","#C6C0B3","#FDE9D3", "#BCCC76", "#7DB269")
-
 
 #### table 9 botanical gardens####
 
@@ -23,7 +19,7 @@ df$period <- factor(df$period, levels = df$period)
 df$covid <- factor(df$covid, levels = c("Before (monthly ave. of 8 months since opening)", "Initial Outbreak", "During"))
 df$noUsers <- as.numeric(df$noUsers)
 
-fig <- df %>% 
+table9 <- df %>% 
   ggplot(aes(period, noUsers, fill = covid))+
   geom_bar(stat = "identity") +
   geom_text(aes(label = paste0(scales::comma(noUsers, 1))),
@@ -44,7 +40,7 @@ fig <- df %>%
 
 
 
-ggsave(fig, filename = "fig.png", dpi = 600, width = 10, height = 4, units = "in")        
+ggsave(table9, filename = file.path("figures", "table9.jpg"), dpi = 600, width = 10, height = 4, units = "in")        
         
 
 
@@ -70,7 +66,7 @@ fig7 <- ggplot(df7, aes(x="", y=value, fill=factor)) +
   theme_void(base_size = 15)  # remove background, grid, numeric labels
 
 
-ggsave(fig7, filename = "fig7.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig7, filename = file.path("figures", "fig7.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 
 ### figure 8: Conceptual Range of UGS ####
@@ -79,7 +75,7 @@ df8 <- data.frame(
   concept = c("Other", "Reservoirs", "Amusement Parks", "National Parks", "Indoor Gardens", "Green Spaces in Private Residences", "Roadside Green Buffer Zones", "Green Spaces in Public Institutions", "Parks By Commute Routes", "Green Spaces Near Urban Streams", "Mountain Hiking Courses", "Rooftop Gardens", "Urban Forests"),
   value = c(0.93, 43.93, 50.93, 57.01, 65.89, 67.29, 68.69, 72.90, 75.23, 75.70, 78.50, 81.78, 86.45)
 ) %>% 
-  arrange(desc(value, concept))
+  arrange(desc(value))
 
 df8$concept <- factor(df8$concept, levels = df8$concept)
 
@@ -101,7 +97,7 @@ fig8 <- df8 %>%
 
 
 
-ggsave(fig8, filename = "fig8.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig8, filename = file.path("figures", "fig8.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 ### figure 9: Importance of UGS  before and with COVID19 ####
 
@@ -134,7 +130,7 @@ fig9 <- df9 %>%
 
 
 
-ggsave(fig9, filename = "fig9.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig9, filename = file.path("figures", "fig9.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 
 ### fig 10. Frequency of utilization of UGS before and in wake of COVID-19 ####
@@ -169,7 +165,7 @@ fig10 <- df10 %>%
 
 
 
-ggsave(fig10, filename = "fig10.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig10, filename = file.path("figures", "fig10.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 #### figure 11 reasons for increasing the use of UGS in the wake of COVID-19 (PIE CHART) #### 
 
@@ -196,7 +192,7 @@ fig11 <- ggplot(df11, aes(x="", y=value, fill=method)) +
   theme_void(base_size = 15)  # remove background, grid, numeric labels
 
 
-ggsave(fig11, filename = "fig11.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig11, filename = file.path("figures", "fig11.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 ### fig 12 reason for use before and after ####
 
@@ -231,7 +227,7 @@ df12$ans <- factor(df12$ans, levels = c("Other", "Walking Pets", "En Route to De
 
 
 
-ggsave(fig12, filename = "fig12.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig12, filename = file.path("figures", "fig12.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 ### fig 13 reasons for reducing use of UGS during COVID-19 ####
 
@@ -257,7 +253,7 @@ fig13 <- ggplot(df13, aes(x="", y=value, fill=method)) +
   theme_void(base_size = 15)  # remove background, grid, numeric labels
 
 
-ggsave(fig13, filename = "fig13.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig13, filename = file.path("figures", "fig13.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 
 #### figure 14 preferred transportation method for visiting UGS (PIE CHART) #### 
@@ -286,7 +282,7 @@ fig14 <- ggplot(df14, aes(x="", y=value, fill=method)) +
   
 
 
-ggsave(fig14, filename = "fig14.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig14, filename = file.path("figures", "fig14.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 
 #### figure 15 preferred Time needed to visit UGS (PIE CHART) #### 
@@ -315,7 +311,7 @@ fig15 <- ggplot(df15, aes(x="", y=value, fill=method)) +
 
 
 
-ggsave(fig15, filename = "fig15.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig15, filename = file.path("figures", "fig15.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 #### figure 16 facilities to encourage use of UGS (PIE CHART) #### 
 
@@ -343,7 +339,7 @@ fig16 <- ggplot(df16, aes(x="", y=value, fill=method)) +
 
 
 
-ggsave(fig16, filename = "fig16.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig16, filename = file.path("figures", "fig16.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
 #### figure 17 Services to encourage use of UGS  #### 
 
@@ -374,5 +370,5 @@ df17$method <- factor(df17$method, levels = df17$method)
         panel.grid.major.x=element_blank())+
   guides(fill = guide_legend(reverse=FALSE))+ expand_limits(y=c(40,0))
 
-ggsave(fig17, filename = "fig17.png", dpi = 600, width = 8, height = 4, units = "in") 
+ggsave(fig17, filename = file.path("figures", "fig17.jpg"), dpi = 600, width = 8, height = 4, units = "in") 
 
