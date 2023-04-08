@@ -15,17 +15,17 @@ Initial
 ![png](figures/fig17or.png) 
 
 Reworked
-![png](figures/fig17.jpg) 
+![jpg](figures/fig17.jpg) 
  
  
 ##### **Table 9. The Number of visitors to the Seoul Botanical Gardens since its official Opening**
 *Source: Seoul Information Communication Plaza *
 
 Initial
-![png](figures/table9or.png) 
+![png](figures/table9or.png)
 
 Reworked
-![png](figures/table9.jpg) 
+![jpg](figures/table9.jpg) 
 
 
 All initial/reworked figure pairings are in the *_figures_all.docx* file within in figures/
